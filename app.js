@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan')
 
 // express app
 const app = express();
@@ -7,6 +8,11 @@ const app = express();
 app.listen(3000,()=>{
   console.log("Listening on http://localhost:3000")
 });
+
+//middlewares & staticfiles(css,images etc)
+app.use(express.static('public'))
+
+app.use(morgan('dev')) //3rd party middleware for logging in the console
 
 // register view engine
 app.set('view engine', 'ejs');
